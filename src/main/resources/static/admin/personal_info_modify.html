@@ -1,0 +1,136 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta content="text/html;charset=UTF-8"/>
+        <link th:src="@{/assets/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <script type="text/javascript" th:src="@{/assets/lib/jquery/jquery-3.2.1.min.js}"></script>
+        <script type="text/javascript" th:src="@{/assets/lib/bootstrap/js/bootstrap.min.js}"></script>
+        <title>修改个人信息</title>
+        <style type="text/css">
+            .container{ width: 80%; height: auto;margin: 0px auto;border: solid 1px;align-items:center;background-color: rgba(87,87,87,0.27)}
+            .middle_content{margin: 0px auto;width:50%;height: auto;}
+            .middle_content_tr{margin: 0px auto;width: 80%;height: auto;}
+            .middle_content_tdOne{margin: 0px auto;width: 20%;height: 40px;}
+            .middle_content_tdTwo{margin: 0px auto;width: 80%;height: 40px;}
+            .middle_content_input{width:100%;height: 30px; border-radius: 9px;}
+            .middle_content_thead{margin: 0px auto; text-align: center; margin-bottom: 5px;}
+            .middle_content_button{width: 80px;height: 50px; margin-left: 5%; border-radius: 5px;}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form action="/personal/info/save" method="post"
+                  class="form-horizontal" id="basic_validate" novalidate="novalidate">
+                <h1 class="middle_content_thead">个人信息修改</h1>
+                <input type="hidden" name="id" th:value="${user.id}"/>
+                <table class="middle_content">
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">用户名:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.username}" type="text" name="userName" readonly="readonly"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">密码:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.pwd}" type="text" name="pwd" readonly="readonly"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">邮箱:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.email}" type="text" name="email" readonly="readonly"/>
+                        </td>
+                    </tr>
+
+
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">盐:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.slat}" type="text" name="slat" readonly="readonly"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">头像:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.avatar}" type="text" name="avatar" readonly="readonly"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">性别:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.sex}" type="text" name="sex"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">手机号码:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.phone}" type="text" name="phone"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">生日:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.brithday}" type="text" name="brithday" readonly="readonly"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">昵称:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.nickname}" type="text" name="nickName"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">真实姓名:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.truename}" type="text" name="trueName"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">用户状态:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.status}" type="text" name="status" readonly="readonly"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">所在地:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.address}" type="text" name="address"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">工作年限:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.workyears}" type="text" name="workyears"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">所在职位:</td>
+                        <td class="middle_content_tdTwo">
+                            <input class="middle_content_input" th:value="${user.job}" type="text" name="job"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">我的梦想:</td>
+                        <td class="middle_content_tdTwo">
+                            <textarea rows="3" cols="55" name="dream" th:value="${user.dream}" readonly="readonly"/>
+                        </td>
+                    </tr>
+                    <tr class="middle_content_tr">
+                        <td class="middle_content_tdOne">自我简介:</td>
+                        <td class="middle_content_tdTwo">
+                            <textarea rows="3" cols="55" th:value="${user.introduce}" name="introduce"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="margin: 0 auto;">
+                            <input class="middle_content_button" type="button" value="取消"/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input class="middle_content_button" type="submit" value="保存"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

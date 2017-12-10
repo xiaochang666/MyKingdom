@@ -1,5 +1,6 @@
 package io.imking;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author: gaul
  */
 @SpringBootApplication
+@MapperScan("io.imking.core.mapping")
 // @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 5 * 60)
 public class MyKingdomApp {
 	public static void main(String[] args) {

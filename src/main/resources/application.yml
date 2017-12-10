@@ -19,6 +19,16 @@ spring:
     host: 192.168.0.3
     port: 6379
     password:
+  thymeleaf:
+    cache: true
+    check-template-location: true
+    content-type: text/html
+    enabeled: true
+    encoding: utf-8
+    #excluded-view-names:
+    mode: HTML5
+    prefix: classpath:/static/admin/
+    suffix: .html
 
 server:
   port: 8080

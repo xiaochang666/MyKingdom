@@ -1,0 +1,90 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta content="text/html;charset=UTF-8"/>
+        <title>个人中心首页</title>
+        <link rel="stylesheet" th:src="@{/assets/lib/bootstrap/css/bootstrap.min.css}"/>
+        <script type="text/javascript" th:src="@{/assets/lib/jquery/jquery-3.2.1.min.js}"></script>
+        <script type="text/javascript" th:src="@{/assets/lib/bootstrap/js/bootstrap.min.js}"></script>
+        <style type="text/css">
+            .container{ width: 80%; height: 375px;margin: 0px auto;border: solid 1px;align-items:center;background-color: rgba(87,87,87,0.27)}
+            .header_left{width: 50%;height: 50%; float: left;}
+            .header_left_left{width: 45%; height: 100%; padding: auto 0; float: left;}
+            .header_left_left_image{ width: 80%;height: 93%;margin: 3% auto;}
+            .header_left_right{width: 55%; height: 100%; padding: auto 0; float: left;}
+            .header_left_right_content{width: 90%;height: 93%;margin: 3% auto;}
+            .header_center{width: 45%;height: 50%; float: left;}
+            .header_center_content{width: 90%;height: 93%;margin: 3% auto;}
+            .header_right{width: 5%;height: 50%; float: left;}
+            .header_bottom{width: 60%;height: 50%; float: left;}
+            .header_bottom_table{width: 100%;height:100%;}
+            .header_bottom_table_trOne{width:100%; height: 90%;margin: 10px;}
+            .header_bottom_image{width:140px;height: 120px; padding: 0;}
+            .header_bottom_table_trTwo{width:100%; height: 90%;}
+            .header_bottom_content{width:140px;height: 60px;}
+            .header_bottom_content_button{width: 110px;height:50px;margin-left: 10px; padding:0;background-color: #588bff; border: solid 0; font-family: 黑体; color: #ffffff;font-size: larger; border-radius: 5px;}
+            .header_bottom_image_img{width: 110px;height:115px;margin-left: 10px;}
+        </style>
+        <script type="text/javascript">
+            function tiaozhuan() {
+                var id=document.getElementById("id").value;
+                window.location.href="/personal/info/modify/"+id;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <input type="hidden" name="id" id="id" th:value="${user.id}"/>
+            <div class="header_left">
+                <div class="header_left_left">
+                    <div class="header_left_left_image">
+                        <img th:src="${user.avatar}" width="100%" height="100%"/>
+                    </div>
+                </div>
+                <div class="header_left_right">
+                    <div class="header_left_right_content">
+                        <h2><span th:text="${user.username}"></span></h2>
+                        <br/><br/>
+                        <span th:text="${user.address}"></span>&nbsp;|&nbsp;
+                        <span th:text="${user.sex}"></span>&nbsp;|&nbsp;
+                        <span th:text="${user.workyears}"></span>年&nbsp;|&nbsp;
+                        <span th:text="${user.job}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="header_center">
+                <div class="header_center_content">
+                    <h3><font color="#FF0000">梦想:</font>
+                        <span th:text="${user.dream}"></span>
+                    </h3>
+                    <h4>个人简介:</h4>
+                    <h5>
+                        <span th:text="${user.introduce}"></span>
+                    </h5>
+                </div>
+            </div>
+            <div class="header_right">
+                <div class="header_right_content">
+                    <a href="javascript:void(0)" class=" btn default">
+                        <font color="red" onclick="tiaozhuan()">修改</font>
+                    </a>
+                </div>
+            </div>
+            <div class="header_bottom">
+                <table class="header_bottom_table">
+                    <tr class="header_bottom_table_trOne">
+                        <td class="header_bottom_image" th:each="KDMedals:${allMedals}">
+                            <img th:src="${KDMedals.imgsrc}" class="header_bottom_image_img"/>
+                        </td>
+                    </tr>
+                    <tr class="header_bottom_table_trTwo">
+                        <td class="header_bottom_content" th:each="KDMedals:${allMedals}">
+                            <button type="button" class="header_bottom_content_button">
+                                <span th:text="${KDMedals.medalname}"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
